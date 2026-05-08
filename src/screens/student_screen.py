@@ -1,16 +1,14 @@
-import streamlit as st
-from src.components.header import header_dashboard
-from src.ui.base_layout import style_base_layout, style_background_dashboard
-from PIL import Image
 import numpy as np
+import streamlit as st
+import time
+from PIL import Image
+from src.components.dialog_enroll import enroll_dialog
+from src.components.header import header_dashboard
+from src.components.subject_card import subject_card
+from src.database.db import get_all_students, create_student, get_student_subjects, get_student_attendance, unenroll_student_to_subject
 from src.pipelines.face_pipeline import predict_attendance, get_face_embeddings, train_classifier
 from src.pipelines.voice_pipeline import get_voice_embedding
-from src.database.db import get_all_students, create_student, get_student_subjects, get_student_attendance, unenroll_student_to_subject
-import time
-from src.components.dialog_enroll import enroll_dialog
-from src.components.subject_card import subject_card
-
-
+from src.ui.base_layout import style_base_layout, style_background_dashboard
 
 def student_dashboard():
     student_data = st.session_state.student_data

@@ -4,11 +4,9 @@ import io
 import librosa
 import streamlit as st
 
-
 @st.cache_resource
 def load_voice_encoder():
     return VoiceEncoder()
-
 
 def get_voice_embedding(audio_bytes):
     try:
@@ -51,7 +49,6 @@ def process_bulk_audio(audio_bytes, candidates_dict, threshold=0.65):
 
         identified_results = {}
 
-
         for start, end in segments:
 
             if (end-start) < sr * 0.5:
@@ -59,7 +56,6 @@ def process_bulk_audio(audio_bytes, candidates_dict, threshold=0.65):
             segment_audio = audio[start:end]
             wav = preprocess_wav(segment_audio)
             embedding = encoder.embed_utterance(wav)
-
 
             sid, score = identify_speaker(embedding, candidates_dict, threshold)
 

@@ -1,18 +1,18 @@
 import streamlit as st
-from src.components.header import header_dashboard
-from src.ui.base_layout import style_base_layout, style_background_dashboard
-from src.database.db import check_teacher_exists, create_teacher, teacher_login, get_teacher_subjects, get_attendance_for_teacher
+import numpy as np
+import pandas as pd
+from datetime import datetime
+from src.components.dialog_add_photo import add_photos_dialog
+from src.components.dialog_attendance_results import attendance_result_dialog
 from src.components.dialog_create_subject import create_subject_dialog
 from src.components.dialog_share_subject import share_subject_dialog
-from src.components.dialog_add_photo import add_photos_dialog
+from src.components.dialog_voice_attendance import voice_attendance_dialog
+from src.components.header import header_dashboard
 from src.components.subject_card import subject_card
-import numpy as np
-from datetime import datetime
-import pandas as pd
+from src.database.db import check_teacher_exists, create_teacher, teacher_login, get_teacher_subjects, get_attendance_for_teacher
 from src.database.config import supabase
 from src.pipelines.face_pipeline import predict_attendance
-from src.components.dialog_attendance_results import attendance_result_dialog
-from src.components.dialog_voice_attendance import voice_attendance_dialog
+from src.ui.base_layout import style_base_layout, style_background_dashboard
 
 def teacher_screen():
 
